@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from osgeo import ogr
-import mapnik 
+import mapnik, os
 
 
 def index(request):
@@ -48,7 +48,7 @@ def index(request):
     style.rules.append(rules)
 
     m.zoom_all()
-    mapnik.render_to_file(m, '/home/eugene/Workspace/gis_django/gis_django/FileStorage/polygons.png', 'png')
+    mapnik.render_to_file(m, os.path.abspath('FileStorage/polygons.png'), 'png')
     
     return render(request, 'base.html')
     
